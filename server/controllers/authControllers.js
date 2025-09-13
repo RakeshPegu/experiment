@@ -1,6 +1,4 @@
-import express from 'express'
-const router = express.Router()
-router.post('/registr', async(req, res)=>{
+export const register = ()=> async(req, res)=>{
     const {email, username, password}  = req.body
     try {
         if(!email || ! username || !password){
@@ -11,8 +9,8 @@ router.post('/registr', async(req, res)=>{
         res.status(500).json({success:false, message:"Something went wrong"})
         
     }
-})
-router.post('/login', async(req, res)=>{
+}
+export const login = ()=>async(req, res)=>{
     const {email, password} = req.body
     try {
         if(!email || !password){
@@ -24,8 +22,8 @@ router.post('/login', async(req, res)=>{
         res.status(500).json({success:false, message:"Something went wrong"})
         
     }
-})
-router.post('/logout', async(req, res)=>{
+}
+export const logout = ()=> async(req, res)=>{
     try {
         res.status(200).json({success:true , message:"Logged out successfully"})
         
@@ -33,5 +31,4 @@ router.post('/logout', async(req, res)=>{
         res.status(500).json({success:false, message:'Something went wrong'})
         
     }
-})
-export default router
+}
